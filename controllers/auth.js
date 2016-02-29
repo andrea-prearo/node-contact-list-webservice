@@ -1,5 +1,4 @@
 var jwt = require('jsonwebtoken');
-var config = require('../config/main');
 var User = require('../models/user');
 
 var auth = {
@@ -81,7 +80,7 @@ var auth = {
     },
 
     getToken: function (res, user) {
-        var token = jwt.sign(user, config.secret, {
+        var token = jwt.sign(user, process.env.PASSPORT_SECRET, {
             // Token expires in 24 hours
             expiresIn: 10080
         });
@@ -97,7 +96,7 @@ var auth = {
     	var token = req.body.token || req.params.token || req.headers['x-access-token'];
     	if (token) {
     		// Decode token, verify secret and check for expiration
-    		jwt.verify(token, config.secret,
+    		jwt.verify(token, process.env.PASSPORT_SECRET,
         function(err, decoded) {			
     			if (err) {
     				return res.json({

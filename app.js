@@ -5,12 +5,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var main = require('./config/main');
 var routes = require('./routes/index');
 var auth = require('./controllers/auth');
 
+require('dotenv').config();
+
 // Database connection
-mongoose.connect(main.database,
+mongoose.connect(process.env.MONGOLAB_URI,
 function(err) {
     if (err) {
         console.error(err);
