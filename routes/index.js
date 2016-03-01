@@ -4,6 +4,13 @@ var contacts = require('../controllers/contacts');
 var users = require('../controllers/users');
 var auth = require('../controllers/auth');
 
+router.get('/', function (req, res) {
+    res.send({
+        success: true,
+        message: 'Welcome!'
+    });
+});
+
 router.post('/auth/login', auth.login);
 router.post('/auth/signup', auth.signUp);
 
