@@ -32,8 +32,8 @@ var users = {
     create: function(req, res, next) {
         var newUser = new User({
             email: req.body.email,
-            password: req.body.password,
-            isAdmin: req.body.isAdmin
+            password: req.body.password
+            // isAdmin: req.body.isAdmin
         });
 
         newUser.save(
@@ -58,7 +58,7 @@ var users = {
             } else {
                 user.email = req.body.email;
                 user.password = req.body.password;
-                user.isAdmin = req.body.isAdmin;
+                // user.isAdmin = req.body.isAdmin;
 
                 user.save(function(err) {
                     if (err) {

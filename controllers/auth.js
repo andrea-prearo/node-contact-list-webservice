@@ -91,13 +91,13 @@ var auth = {
     },
 
     // Route middleware to authenticate request and check token
-    validate: function(req, res, next) {
+    validateUser: function(req, res, next) {
     	// Check for token
     	var token = req.body.token || req.params.token || req.headers['x-access-token'];
     	if (token) {
     		// Decode token, verify secret and check for expiration
     		jwt.verify(token, process.env.PASSPORT_SECRET,
-        function(err, decoded) {			
+        function(err, decoded) {
     			if (err) {
     				return res.json({
                         success: false,
@@ -115,8 +115,20 @@ var auth = {
     			message: 'No token provided.'
     		});
     	}
-    }
+    },
 
+    // Route middleware to verify if user is admin
+    validateAdmin: function(req, res, next) {
+      var user = req.decoded && req.decoded._doc; 
+      if (user && user.isAdmin) {
+        next()
+      } else {
+        return res.status(401).send({ 
+          success: false, 
+          message: 'Unauthorized.'
+        });
+      }
+    }
 }
 
 module.exports = auth;

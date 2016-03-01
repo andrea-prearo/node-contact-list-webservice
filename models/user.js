@@ -13,7 +13,9 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  isAdmin: Boolean
+  // 'isAdmin' will not be set by the API for security reasons.
+  // Admin users MUST be created directly in MongoDB.
+  isAdmin: Boolean  
 });
 
 // Sore user (with encrypted password)

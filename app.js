@@ -41,7 +41,8 @@ app.all('/*', function(req, res, next) {
   }
 });
 
-app.all('/api/*', [auth.validate]);
+app.all('/api/*', [auth.validateUser]);
+app.all('/api/admin/users', [auth.validateAdmin]);
 
 app.use('/', routes);
 
