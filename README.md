@@ -1,4 +1,4 @@
-# Node.js server sample app
+# Node/Express/MongoDB sample app
 ## Features:
 - Contact list RESTful API ([Express](http://expressjs.com/))
 - User authentication ([Passport](http://passportjs.org/))
@@ -14,3 +14,7 @@
 3. Start MongoDB: ```mongod```
 4. Start the server: ```npm start```
 5. You can test the server by visiting: [http://localhost:3000](http://localhost:3000)
+
+# Heroku
+This app can be eadily deployed using [Heroku](https://www.heroku.com/) and [mLab](https://www.mlab.com/).
+You can see a running instance in action at: [http://hidden-garden-53580.herokuapp.com/](http://hidden-garden-53580.herokuapp.com/).
