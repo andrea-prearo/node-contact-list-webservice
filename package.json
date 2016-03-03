@@ -1,8 +1,8 @@
 {
-  "name": "mean-contact-list-app-server",
-  "description": "Simple MEAN app for contact list",
+  "name": "node-contact-list-webservice",
+  "description": "Simple Node/Express/MongoDB web service for contact list management",
   "version": "1.0.0",
-  "homepage": "https://github.com/andrea-prearo/mean-contact-list-app-server",
+  "homepage": "https://github.com/andrea-prearo/node-contact-list-webservice",
   "license": "MIT",
   "private": true,
   "scripts": {

@@ -42,7 +42,7 @@ var auth = {
     },
 
     // Authenticate the user and get a JSON Web Token to include in the header of future requests.
-    login: function(req, res, next) {
+    logIn: function(req, res, next) {
         if (!req.body.email || !req.body.password) {
             res.json({
                 success: false,

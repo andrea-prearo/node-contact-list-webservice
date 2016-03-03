@@ -7,11 +7,11 @@ var auth = require('../controllers/auth');
 router.get('/', function (req, res) {
     res.send({
         success: true,
-        message: 'Welcome!'
+        message: 'Hello!'
     });
 });
 
-router.post('/auth/login', auth.login);
+router.post('/auth/login', auth.logIn);
 router.post('/auth/signup', auth.signUp);
 
 router.get('/api/contacts', contacts.getAll);
