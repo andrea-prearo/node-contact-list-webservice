@@ -6,11 +6,10 @@ var auth = {
     // Register new user
     signUp: function(req, res, next) {
         if (!req.body.email || !req.body.password) {
-            res.json({
+            return res.status(401).json({
                 success: false,
                 message: 'Please enter email and password.'
             });
-            return;
         }
 
         User.findOne({ email: req.body.email },
@@ -19,7 +18,7 @@ var auth = {
                 next(err);
             } else {
                 if (user) {
-                    res.json({
+                    res.status(409).json({
                         success: false,
                         message: 'An user has already registered with this email.' 
                     });
@@ -44,11 +43,10 @@ var auth = {
     // Authenticate the user and get a JSON Web Token to include in the header of future requests.
     logIn: function(req, res, next) {
         if (!req.body.email || !req.body.password) {
-            res.json({
+            return res.status(401).json({
                 success: false,
                 message: 'Please enter email and password.'
             });
-            return;
         }
 
         User.findOne({ email: req.body.email },
@@ -63,16 +61,16 @@ var auth = {
                             // Return token if the password matched and no error was thrown
                             auth.getToken(res, user);
                         } else {
-                            res.send({
+                            res.status(401).json({
                                 success: false,
-                                message: 'Authentication failed. Passwords did not match.'
+                                message: 'Authentication failed. Unrecognized username or password.'
                             });
                         }
                     });
                 } else {
-                    res.send({
+                    res.status(401).json({
                         success: false,
-                        message: 'Authentication failed. User not found.'
+                        message: 'Authentication failed. Unrecognized username or password.'
                     });
                 }
             }
@@ -86,7 +84,7 @@ var auth = {
         });
         res.json({
             success: true,
-            token: 'JWT ' + token
+            token: token
         });
     },
 
@@ -99,10 +97,10 @@ var auth = {
     		jwt.verify(token, process.env.PASSPORT_SECRET,
         function(err, decoded) {
     			if (err) {
-    				return res.json({
-                        success: false,
-                        message: 'Failed to authenticate token.'
-                    });		
+    				res.status(401).json({
+              success: false,
+              message: 'Failed to authenticate token.'
+            });		
     			} else {
     				// If everything is good, save to request for use in other routes
     				req.decoded = decoded;	
@@ -110,7 +108,7 @@ var auth = {
     			}
     		});
     	} else {
-    		return res.status(403).send({ 
+    		res.status(401).send({ 
     			success: false, 
     			message: 'No token provided.'
     		});
@@ -123,7 +121,7 @@ var auth = {
       if (user && user.isAdmin) {
         next()
       } else {
-        return res.status(401).send({ 
+        res.status(403).send({ 
           success: false, 
           message: 'Unauthorized.'
         });
