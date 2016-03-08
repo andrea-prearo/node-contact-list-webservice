@@ -18,3 +18,7 @@
 # Heroku
 This app can be eadily deployed using [Heroku](https://www.heroku.com/) and [mLab](https://www.mlab.com/).
 You can see a running instance in action at: [http://hidden-garden-53580.herokuapp.com/](http://hidden-garden-53580.herokuapp.com/).
+
+# Credits
+- Avatar images designed by [Freepik.com](http://www.freepik.com)
+- Contacts and Users created with [faker.js](https://github.com/FotoVerite/Faker.js)

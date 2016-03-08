@@ -12,7 +12,7 @@ var ContactSchema = new mongoose.Schema({
         required: true        
     },
     company: String,
-    phone: [Number],
+    phone: [String],
     email: [String],
     address: String,
     city: String,
