@@ -18,7 +18,7 @@ var ContactSchema = new mongoose.Schema({
     city: String,
     state: String,
     country: String,
-    zipCode: Number
+    zipCode: String
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);
