@@ -7,11 +7,11 @@ var users = {
     // GET users list
     getAll: function(req, res, next) {
         User.find(
-        function(err, users) {
+        function(err, items) {
             if (err) {
                 next(err);
             } else {
-                res.json(users);
+                res.json(items);
             }
         });
     },
@@ -19,11 +19,11 @@ var users = {
     // GET user details
     getOne: function(req, res, next) {
         User.findById(req.params.id,
-        function(err, user) {
+        function(err, item) {
             if (err) {
                 next(err);
             } else {
-                res.json(user);
+                res.json(item);
             }
         });
     },
@@ -52,18 +52,21 @@ var users = {
     // PUT contact details
     update: function(req, res, next) {
         User.findById(req.params.id, 
-        function(err, user) {
+        function(err, item) {
             if (err) {
                 next(err);
             } else {
-                user.email = req.body.email;
-                user.password = req.body.password;
-                // user.isAdmin = req.body.isAdmin;
+                item.email = req.body.email;
+                item.password = req.body.password;
+                item.contacts = req.body.contacts
+                // item.isAdmin = req.body.isAdmin;
 
-                user.save(function(err) {
+                item.save(function(err) {
                     if (err) {
                         next(err);
                     } else {
+                				// After the update, save to request for use in other routes
+                				req.decoded = item;
                         res.json({
                             success: true,
                             message: 'User successfully created: ' + req.body.email
@@ -77,11 +80,11 @@ var users = {
     // DELETE user
     delete: function(req, res, next) {
         User.findByIdAndRemove(req.params.id,
-        function(err, user) {
+        function(err, item) {
             if (err) {
                 next(err);
             } else {
-                res.json(user);
+                res.json(item);
             }
         });
     }

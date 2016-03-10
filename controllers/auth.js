@@ -17,6 +17,7 @@ var auth = {
             if (err) {
                 next(err);
             } else {
+                // Check if user exists
                 if (user) {
                     res.status(409).json({
                         success: false,
@@ -32,7 +33,7 @@ var auth = {
                         if (err) {
                             next(err);
                         } else {
-                            auth.getToken(res, user);
+                            auth.getToken(res, newUser);
                         }
                     });
                 }
@@ -103,7 +104,7 @@ var auth = {
             });		
     			} else {
     				// If everything is good, save to request for use in other routes
-    				req.decoded = decoded;	
+    				req.decoded = decoded;
     				next();
     			}
     		});

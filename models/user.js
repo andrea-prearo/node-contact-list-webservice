@@ -15,10 +15,11 @@ var UserSchema = new mongoose.Schema({
   },
   // 'isAdmin' will not be set by the API for security reasons.
   // Admin users MUST be created directly in MongoDB.
-  isAdmin: Boolean  
+  isAdmin: Boolean,
+  contacts : [{ type: mongoose.Schema.ObjectId, ref: 'Contact' }]
 });
 
-// Sore user (with encrypted password)
+// Save user (with encrypted password)
 UserSchema.pre('save', function (next) {
   var user = this;
   if (this.isModified('password') || this.isNew) {
