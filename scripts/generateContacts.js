@@ -1,26 +1,16 @@
 'use strict';
 
 var faker = require('faker');
+var contact = require('./contact');
 
-for (var i = 0; i < 16; i++) {
-  var json = JSON.stringify({
-    avatar: faker.Image.avatar(),
-    firstName: faker.Name.firstName(),
-    lastName: faker.Name.lastName(),
-    email: [
-      faker.Internet.email(),
-      faker.Internet.email()
-    ],
-    phone: [
-      faker.PhoneNumber.phoneNumber(),
-      faker.PhoneNumber.phoneNumber()
-    ],
-    company: faker.Company.companyName(),
-    address: faker.Address.streetAddress(),
-    city: faker.Address.city(),
-    state: faker.Address.usState(),
-    country: "USA",
-    zipCode: faker.Address.zipCode()
-  });
-  console.log(json);
+var count = 10
+var output = '[';
+for (var i = 0; i < count; i++) {
+  var json = JSON.stringify(contact.generate());
+  output = output.concat(json)
+  if (i < count - 1) {
+    output = output.concat(',');
+  }
 }
+output = output.concat(']');
+console.log(output);
