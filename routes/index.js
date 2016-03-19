@@ -16,7 +16,7 @@ router.post('/auth/signup', auth.signUp);
 
 router.get('/api/contacts', contacts.getAll);
 router.get('/api/contacts/:id', contacts.getOne);
-router.post('/api/contacts/', contacts.create);
+router.post('/api/contacts', contacts.create);
 router.put('/api/contacts/:id', contacts.update);
 router.delete('/api/contacts/:id', contacts.delete);
 

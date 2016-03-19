@@ -14,11 +14,13 @@ var ContactSchema = new mongoose.Schema({
     company: String,
     phone: [String],
     email: [String],
-    address: String,
-    city: String,
-    state: String,
-    country: String,
-    zipCode: String
+    location: [{
+      address: String,
+      city: String,
+      state: String,
+      country: String,
+      zipCode: String
+  }]
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);

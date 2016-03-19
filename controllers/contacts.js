@@ -74,11 +74,7 @@ var contacts = {
             company: req.body.company,
             phone: req.body.phone,
             email: req.body.email,
-            address: req.body.address,
-            city: req.body.city,
-            state: req.body.state,
-            country: req.body.country,
-            zipCode: req.body.zipCode
+            location: req.body.location
         });
 
         newContact.save(
@@ -124,11 +120,7 @@ var contacts = {
                 item.company = req.body.company;
                 item.phone = req.body.phone;
                 item.email = req.body.email;
-                item.address = req.body.address;
-                item.city = req.body.city;
-                item.state = req.body.state;
-                item.country = req.body.country
-                item.zipCode = req.body.zipCode;
+                item.location = req.body.location;
                 item.contacts = req.body.contacts;
 
                 item.save(function(err) {
