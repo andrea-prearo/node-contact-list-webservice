@@ -21,11 +21,14 @@ var ContactSchema = new mongoose.Schema({
     address: String
   }],
   location: [{
-    address: String,
-    city: String,
-    state: String,
-    country: String,
-    zipCode: String
+    label: String,
+    data: {
+      address: String,
+      city: String,
+      state: String,
+      country: String,
+      zipCode: String
+    }
   }]
 });
 
