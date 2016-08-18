@@ -6,7 +6,7 @@ var location = require('./location');
 var contact = {
 
     generate: function () {
-      var count = 10
+      var count = 10;
       var output = '[';
       for (var i = 0; i < count; i++) {
         var json = JSON.stringify({
@@ -27,7 +27,7 @@ var contact = {
             location.generate()
           ]
         });
-        output = output.concat(json)
+        output = output.concat(json);
         if (i < count - 1) {
           output = output.concat(',');
         }

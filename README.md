@@ -1,4 +1,5 @@
 # Node/Express/MongoDB web service example
+
 ## Features:
 - Contact list RESTful API ([Express](http://expressjs.com/))
 - User authentication ([Passport](http://passportjs.org/))
@@ -20,4 +21,4 @@ This app can be eadily deployed using [Heroku](https://www.heroku.com/) and [mLa
 You can see a running instance in action at: [http://hidden-garden-53580.herokuapp.com/](http://hidden-garden-53580.herokuapp.com/).
 
 # Credits
-- Contacts and Users created with [faker.js](https://github.com/FotoVerite/Faker.js)
+- Sample Contacts and Users created with [faker.js](https://github.com/marak/faker.js)
