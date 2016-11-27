@@ -11,7 +11,7 @@ var users = {
             if (err) {
                 next(err);
             } else {
-                res.json(items);
+                res.json({users: items});
             }
         });
     },
@@ -23,7 +23,7 @@ var users = {
             if (err) {
                 next(err);
             } else {
-                res.json(item);
+                res.json({user: item});
             }
         });
     },
@@ -65,8 +65,8 @@ var users = {
                     if (err) {
                         next(err);
                     } else {
-                				// After the update, save to request for use in other routes
-                				req.decoded = item;
+                        // After the update, save to request for use in other routes
+                		req.decoded = item;
                         res.json({
                             success: true,
                             message: 'User successfully created: ' + req.body.email
@@ -84,7 +84,7 @@ var users = {
             if (err) {
                 next(err);
             } else {
-                res.json(item);
+                res.json({user: item});
             }
         });
     }

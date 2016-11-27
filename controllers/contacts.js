@@ -38,7 +38,7 @@ var contacts = {
                         message: 'Internal error.'
                     });
                 } else {
-                  res.json(items);
+                  res.json({contacts: items});
                 }
             }
         });
@@ -51,7 +51,7 @@ var contacts = {
             if (err) {
                 next(err);
             } else {
-                res.json(item);
+                res.json({contact: item});
             }
         });
     },
@@ -127,7 +127,7 @@ var contacts = {
                     if (err) {
                         next(err);
                     } else {
-                        res.json(item);
+                        res.json({contact: item});
                     }
                 });
             }
@@ -141,7 +141,7 @@ var contacts = {
             if (err) {
                 next(err);
             } else {
-                res.json(item);
+                res.json({contact: item});
             }
         });
     }
